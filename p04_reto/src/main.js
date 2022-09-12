@@ -1,10 +1,10 @@
 import Bootloader from "./scenes/Bootloader.js";
 const config = {
-    title: "DeadSouls",
+    title: "P04_Reto",
     version: "0.0.1",
     type: Phaser.AUTO,
     scale: {
-        parent: "phaser_container",
+        parent: "contenedor",
         width: 5120,
         height: 1600,
         mode: Phaser.Scale.FIT,
