@@ -271,7 +271,7 @@ class Bootloader extends Phaser.Scene{
                 this.card11.visible = false;
                 this.card12.visible = false;
             }
-            if (this.bandC12) {
+            if (this.bandC13) {
                 this.card13.visible = false;
                 this.card14.visible = false;
             }
