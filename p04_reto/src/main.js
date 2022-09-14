@@ -6,11 +6,11 @@ const config = {
     scale: {
         parent: "contenedor",
         width: 5120,
-        height: 1600,
+        height: 2038,
         mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH
     },
-    backgroundColor: "#e67e22",
+    backgroundColor: "#33475b",
     pixelArt: true,
     physics: {
         default: "arcade",
