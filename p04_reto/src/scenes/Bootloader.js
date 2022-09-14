@@ -107,11 +107,11 @@ class Bootloader extends Phaser.Scene{
             
         });
 
-        for (let index = 0; index < this.arrayC.length; index++) {
-            this.arrayC[index].on(eventos.POINTER_OVER,function(){
-                this.arrayC[index].setTint(0x0000ff);
-            }); 
-        }
+        // for (let index = 0; index < this.arrayC.length; index++) {
+        //     this.arrayC[index].on(eventos.POINTER_OVER,function(){
+        //         this.arrayC[index].setTint(0x0000ff);
+        //     }); 
+        // }
     }
         
         update(time, delta) 
