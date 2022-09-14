@@ -134,12 +134,10 @@ class Bootloader extends Phaser.Scene{
                             // console.log(this.errores);
                         }
                     }
-
                 }
                 if (this.arrayB[index]) {
                     this.arrayC[index].visible = false;
                     this.arrayC[(index - 19)*(-1)].visible = false;
-
                 }
             }
             if (this.score == 1000) {
