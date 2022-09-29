@@ -9,7 +9,7 @@ class Bootloader extends Phaser.Scene {
         console.log('Bootloader');
         this.load.setPath('./assets/');
 
-        this.load.image('rc', 'RC.jpg');
+        this.load.image('rc', 'RCPuzzle.png');
         this.load.image("drop", "drop.png");
         this.load.image([
             { key: '0', url: "11.png"  },
@@ -42,6 +42,36 @@ class Bootloader extends Phaser.Scene {
             { key: '27', url: "54.png"  },
             { key: '28', url: "55.png"  },
             { key: '29', url: "56.png"  },
+            { key: '30', url: "P11.png"  },
+            { key: '31', url: "P12.png"  },
+            { key: '32', url: "P13.png"  },
+            { key: '33', url: "P14.png"  },
+            { key: '34', url: "P15.png"  },
+            { key: '35', url: "P16.png"  },
+            { key: '36', url: "P21.png"  },
+            { key: '37', url: "P22.png"  },
+            { key: '38', url: "P23.png"  },
+            { key: '39', url: "P24.png"  },
+            { key: '40', url: "P25.png"  },
+            { key: '41', url: "P26.png"  },
+            { key: '42', url: "P31.png"  },
+            { key: '43', url: "P32.png"  },
+            { key: '44', url: "P33.png"  },
+            { key: '45', url: "P34.png"  },
+            { key: '46', url: "P35.png"  },
+            { key: '47', url: "P36.png"  },
+            { key: '48', url: "P41.png"  },
+            { key: '49', url: "P42.png"  },
+            { key: '50', url: "P43.png"  },
+            { key: '51', url: "P44.png"  },
+            { key: '52', url: "P45.png"  },
+            { key: '53', url: "P46.png"  },
+            { key: '54', url: "P51.png"  },
+            { key: '55', url: "P52.png"  },
+            { key: '56', url: "P53.png"  },
+            { key: '57', url: "P54.png"  },
+            { key: '58', url: "P55.png"  },
+            { key: '59', url: "P56.png"  },
         ]
         );
 
@@ -65,23 +95,23 @@ class Bootloader extends Phaser.Scene {
 
         this.hb = Array(30);
         for(var i = 0; i < this.hb.length/5; i++){
-            this.hb[i] = this.add.image(290+(i*320), 244, i).setOrigin(0,0).setDepth(-1).setInteractive();
+            this.hb[i] = this.add.image(290+(i*320), 244, i + 30).setOrigin(0,0).setDepth(-1).setInteractive();
             //this.hb[i].setScale(3.4, 2.35); 
             this.hb[i].input.dropZone = true;
 
-            this.hb[i+6] = this.add.image(290+(i*320), 460, i+6).setOrigin(0,0).setDepth(-1).setInteractive();
+            this.hb[i+6] = this.add.image(290+(i*320), 460, i+6 + 30).setOrigin(0,0).setDepth(-1).setInteractive();
             //this.hb[i+this.hb.lenght/5].setScale(3.4, 2.35); 
             this.hb[i+6].input.dropZone = true;
 
-            this.hb[i+12] = this.add.image(290+(i*320), 676, i+12).setOrigin(0,0).setDepth(-1).setInteractive();
+            this.hb[i+12] = this.add.image(290+(i*320), 676, i+12 + 30).setOrigin(0,0).setDepth(-1).setInteractive();
             //this.hb[i+this.hb.lenght/5+6].setScale(3.4, 2.35);
             this.hb[i+12].input.dropZone = true; 
 
-            this.hb[i+18] = this.add.image(290+(i*320), 892, i+18).setOrigin(0,0).setDepth(-1).setInteractive();
+            this.hb[i+18] = this.add.image(290+(i*320), 892, i+18 + 30).setOrigin(0,0).setDepth(-1).setInteractive();
             //this.hb[i+this.hb.lenght/5+12].setScale(3.4, 2.35); 
             this.hb[i+18].input.dropZone = true;
 
-            this.hb[i+24] = this.add.image(290+(i*320), 1108, i+24).setOrigin(0,0).setDepth(-1).setInteractive();
+            this.hb[i+24] = this.add.image(290+(i*320), 1108, i+24 + 30).setOrigin(0,0).setDepth(-1).setInteractive();
             //this.hb[i+this.hb.lenght/5+18].setScale(3.4, 2.35); 
             this.hb[i+24].input.dropZone = true;
         }
