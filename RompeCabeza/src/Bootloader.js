@@ -10,7 +10,7 @@ class Bootloader extends Phaser.Scene {
         this.load.setPath('./assets/');
 
         this.load.image('rc', 'RC.jpg');
-
+        this.load.image("drop", "drop.png");
         this.load.image([
             { key: '0', url: "11.png"  },
             { key: '1', url: "12.png"  },
@@ -52,25 +52,22 @@ class Bootloader extends Phaser.Scene {
 
     create() {
         this.add.image(this.scale.width / 2, this.scale.height / 2, 'rc').setOrigin(0.5,0.7);
-        
-        var cortes = Array(30);
-        for(var i = 0; i < cortes.length/2; i++)
-        {
-            
-            cortes[i] = this.add.image(100+i*135, 1400, i).setOrigin(0,0).setInteractive();
-            cortes[i+cortes.length/2] = this.add.image(100+i*135, 1700, i+cortes.length/2).setOrigin(0,0).setInteractive();
-            
-            // if((i>=0) &&(i<7)){
-            //     cortes[i] = this.add.image(50, 50+i*200, i).setOrigin(0,0).setInteractive();
-            // }
-            // if((i>7) && (i<14)){//320
-            //     cortes[i] = this.add.image(320+i*200, 50, i).setOrigin(0,0).setInteractive();
-            // }
-            // if((i>14) && (i<21)){
+        const eventos = Phaser.Input.Events;
 
-            // }
+        this.cortes = Array(30);
+        for(var i = 0; i < this.cortes.length/2; i++)
+        {
+            this.cortes[i] = this.add.image(100+i*135, 1400, i).setOrigin(0,0).setInteractive();
+            this.input.setDraggable(this.cortes[i]);
+            this.cortes[i+this.cortes.length/2] = this.add.image(100+i*135, 1700, i+this.cortes.length/2).setOrigin(0,0).setInteractive();
+            this.input.setDraggable(this.cortes[i+this.cortes.length/2]);
         }
 
+        this.hb = Array(30);
+        for(var i = 0; i < this.hb.length/6; i++){
+            this.hb[i] = this.add.image(100+(i*90), 100, "drop").setOrigin(0,0).setInteractive();
+        }       
+        this.input.setDraggable(this.hb[0]);
     }
 
     update(time,delta)
