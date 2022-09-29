@@ -96,23 +96,23 @@ class Bootloader extends Phaser.Scene {
         this.hb = Array(30);
         for(var i = 0; i < this.hb.length/5; i++){
             this.hb[i] = this.add.image(290+(i*320), 244, i + 30).setOrigin(0,0).setDepth(-1).setInteractive();
-            //this.hb[i].setScale(3.4, 2.35); 
+            // this.hb[i].visible = false;
             this.hb[i].input.dropZone = true;
 
             this.hb[i+6] = this.add.image(290+(i*320), 460, i+6 + 30).setOrigin(0,0).setDepth(-1).setInteractive();
-            //this.hb[i+this.hb.lenght/5].setScale(3.4, 2.35); 
+            // this.hb[i+6].visible = false;
             this.hb[i+6].input.dropZone = true;
 
             this.hb[i+12] = this.add.image(290+(i*320), 676, i+12 + 30).setOrigin(0,0).setDepth(-1).setInteractive();
-            //this.hb[i+this.hb.lenght/5+6].setScale(3.4, 2.35);
+            // this.hb[i+12].visible = false;
             this.hb[i+12].input.dropZone = true; 
 
             this.hb[i+18] = this.add.image(290+(i*320), 892, i+18 + 30).setOrigin(0,0).setDepth(-1).setInteractive();
-            //this.hb[i+this.hb.lenght/5+12].setScale(3.4, 2.35); 
+            // this.hb[i+18].visible = false;
             this.hb[i+18].input.dropZone = true;
 
             this.hb[i+24] = this.add.image(290+(i*320), 1108, i+24 + 30).setOrigin(0,0).setDepth(-1).setInteractive();
-            //this.hb[i+this.hb.lenght/5+18].setScale(3.4, 2.35); 
+            // this.hb[i+24].visible = false;
             this.hb[i+24].input.dropZone = true;
         }
         this.hb[3].setOrigin(0.2,0);
