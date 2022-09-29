@@ -3,6 +3,8 @@ class Bootloader extends Phaser.Scene {
         super('Bootloader'); 
     }
 
+    init () {}
+
     preload() {
         console.log('Bootloader');
         this.load.setPath('./assets/');
@@ -16,6 +18,11 @@ class Bootloader extends Phaser.Scene {
 
     create() {
         this.add.image(this.scale.width / 2, this.scale.height / 2, 'logo_gamma');
+    }
+
+    update(time,delta)
+    {
+        
     }
 }
 export default Bootloader;
