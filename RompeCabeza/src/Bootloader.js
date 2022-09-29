@@ -51,13 +51,26 @@ class Bootloader extends Phaser.Scene {
     }
 
     create() {
-        this.add.image(this.scale.width / 2, this.scale.height / 2, 'rc');
+        this.add.image(this.scale.width / 2, this.scale.height / 2, 'rc').setOrigin(0.5,0.7);
         
         var cortes = Array(30);
-        for(var i = 0; i < 30; i++)
+        for(var i = 0; i < cortes.length/2; i++)
         {
-            cortes[i] = this.add.image(100+i*10, 100+i*20, i).setOrigin(0,0).setInteractive();
+            
+            cortes[i] = this.add.image(100+i*135, 1400, i).setOrigin(0,0).setInteractive();
+            cortes[i+cortes.length/2] = this.add.image(100+i*135, 1700, i+cortes.length/2).setOrigin(0,0).setInteractive();
+            
+            // if((i>=0) &&(i<7)){
+            //     cortes[i] = this.add.image(50, 50+i*200, i).setOrigin(0,0).setInteractive();
+            // }
+            // if((i>7) && (i<14)){//320
+            //     cortes[i] = this.add.image(320+i*200, 50, i).setOrigin(0,0).setInteractive();
+            // }
+            // if((i>14) && (i<21)){
+
+            // }
         }
+
     }
 
     update(time,delta)
