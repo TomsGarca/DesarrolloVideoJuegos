@@ -57,17 +57,44 @@ class Bootloader extends Phaser.Scene {
         this.cortes = Array(30);
         for(var i = 0; i < this.cortes.length/2; i++)
         {
-            this.cortes[i] = this.add.image(100+i*135, 1400, i).setOrigin(0,0).setInteractive();
+            this.cortes[i] = this.add.image(100+i*135, 1400, i).setOrigin(0,0).setDepth(2).setInteractive();
             this.input.setDraggable(this.cortes[i]);
-            this.cortes[i+this.cortes.length/2] = this.add.image(100+i*135, 1700, i+this.cortes.length/2).setOrigin(0,0).setInteractive();
+            this.cortes[i+this.cortes.length/2] = this.add.image(100+i*135, 1700, i+this.cortes.length/2).setOrigin(0,0).setDepth(2).setInteractive();
             this.input.setDraggable(this.cortes[i+this.cortes.length/2]);
         }
 
         this.hb = Array(30);
-        for(var i = 0; i < this.hb.length/6; i++){
-            this.hb[i] = this.add.image(100+(i*90), 100, "drop").setOrigin(0,0).setInteractive();
-        }       
-        this.input.setDraggable(this.hb[0]);
+        for(var i = 0; i < this.hb.length/5; i++){
+            this.hb[i] = this.add.image(290+(i*320), 244, i).setOrigin(0,0).setDepth(1).setInteractive();
+            //this.hb[i].setScale(3.4, 2.35); 
+            this.hb[i].input.dropZone = true;
+            this.hb[i+this.hb.lenght/5] = this.add.image(290+(i*320), 460, i+6).setOrigin(0,0).setDepth(1).setInteractive();
+            //this.hb[i+this.hb.lenght/5].setScale(3.4, 2.35); 
+            this.hb[i+this.hb.lenght/5].input.dropZone = true;
+            this.hb[i+this.hb.lenght/5+6] = this.add.image(290+(i*320), 676, i+12).setOrigin(0,0).setDepth(1).setInteractive();
+            //this.hb[i+this.hb.lenght/5+6].setScale(3.4, 2.35);
+            this.hb[i+this.hb.lenght/5+6].input.dropZone = true; 
+            this.hb[i+this.hb.lenght/5+12] = this.add.image(290+(i*320), 892, i+18).setOrigin(0,0).setDepth(1).setInteractive();
+            //this.hb[i+this.hb.lenght/5+12].setScale(3.4, 2.35); 
+            this.hb[i+this.hb.lenght/5+12].input.dropZone = true;
+            this.hb[i+this.hb.lenght/5+18] = this.add.image(290+(i*320), 1108, i+24).setOrigin(0,0).setDepth(1).setInteractive();
+            //this.hb[i+this.hb.lenght/5+18].setScale(3.4, 2.35); 
+            this.hb[i+this.hb.lenght/5+18].input.dropZone = true;
+        }   
+
+        this.input.on(eventos.DRAG_START, (pointer, obj, dragX, dragY) => {
+            obj.setScale(0.9);
+        });
+
+        this.input.on(eventos.DRAG, (pointer, obj, dragX, dragY) => {
+            obj.x = dragX;
+            obj.y = dragY;
+        });
+
+        this.input.on(eventos.DROP, (pointer, obj, dropzone) => {
+            obj.x = dropzone.x;
+            obj.y = dropzone.y;
+        });
     }
 
     update(time,delta)
