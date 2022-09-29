@@ -65,30 +65,90 @@ class Bootloader extends Phaser.Scene {
 
         this.hb = Array(30);
         for(var i = 0; i < this.hb.length/5; i++){
-            this.hb[i] = this.add.image(290+(i*320), 244, i).setOrigin(0,0).setDepth(1).setInteractive();
+            this.hb[i] = this.add.image(290+(i*320), 244, i).setOrigin(0,0).setDepth(-1).setInteractive();
             //this.hb[i].setScale(3.4, 2.35); 
             this.hb[i].input.dropZone = true;
-            this.hb[i+this.hb.lenght/5] = this.add.image(290+(i*320), 460, i+6).setOrigin(0,0).setDepth(1).setInteractive();
+
+            this.hb[i+6] = this.add.image(290+(i*320), 460, i+6).setOrigin(0,0).setDepth(-1).setInteractive();
             //this.hb[i+this.hb.lenght/5].setScale(3.4, 2.35); 
-            this.hb[i+this.hb.lenght/5].input.dropZone = true;
-            this.hb[i+this.hb.lenght/5+6] = this.add.image(290+(i*320), 676, i+12).setOrigin(0,0).setDepth(1).setInteractive();
+            this.hb[i+6].input.dropZone = true;
+
+            this.hb[i+12] = this.add.image(290+(i*320), 676, i+12).setOrigin(0,0).setDepth(-1).setInteractive();
             //this.hb[i+this.hb.lenght/5+6].setScale(3.4, 2.35);
-            this.hb[i+this.hb.lenght/5+6].input.dropZone = true; 
-            this.hb[i+this.hb.lenght/5+12] = this.add.image(290+(i*320), 892, i+18).setOrigin(0,0).setDepth(1).setInteractive();
+            this.hb[i+12].input.dropZone = true; 
+
+            this.hb[i+18] = this.add.image(290+(i*320), 892, i+18).setOrigin(0,0).setDepth(-1).setInteractive();
             //this.hb[i+this.hb.lenght/5+12].setScale(3.4, 2.35); 
-            this.hb[i+this.hb.lenght/5+12].input.dropZone = true;
-            this.hb[i+this.hb.lenght/5+18] = this.add.image(290+(i*320), 1108, i+24).setOrigin(0,0).setDepth(1).setInteractive();
+            this.hb[i+18].input.dropZone = true;
+
+            this.hb[i+24] = this.add.image(290+(i*320), 1108, i+24).setOrigin(0,0).setDepth(-1).setInteractive();
             //this.hb[i+this.hb.lenght/5+18].setScale(3.4, 2.35); 
-            this.hb[i+this.hb.lenght/5+18].input.dropZone = true;
-        }   
+            this.hb[i+24].input.dropZone = true;
+        }
+        this.hb[3].setOrigin(0.2,0);
+        this.hb[4].setOrigin(0.2,0);
+        this.hb[5].setOrigin(0.2,0);
+
+        this.cortes[3].setOrigin(0.2,0);
+        this.cortes[4].setOrigin(0.2,0);
+        this.cortes[5].setOrigin(0.2,0);
+
+        this.hb[6].setOrigin(0,0.15);
+        this.hb[7].setOrigin(0.19,0.18);
+        this.hb[8].setOrigin(0.16,0);
+        this.hb[9].setOrigin(0.01,0.19);
+        this.hb[10].setOrigin(0.16,0.16);
+
+        this.cortes[6].setOrigin(0,0.15);
+        this.cortes[7].setOrigin(0.19,0.18);
+        this.cortes[8].setOrigin(0.16,0);
+        this.cortes[9].setOrigin(0.01,0.19);
+        this.cortes[10].setOrigin(0.16,0.16);
+
+        this.hb[13].setOrigin(0,.19);
+        this.hb[14].setOrigin(0.2,.19);
+        this.hb[15].setOrigin(0.2,.19);
+        this.hb[16].setOrigin(0.16,0.01);
+        this.hb[17].setOrigin(0,0.2);
+
+        this.cortes[13].setOrigin(0,.19);
+        this.cortes[14].setOrigin(0.2,.19);
+        this.cortes[15].setOrigin(0.2,.19);
+        this.cortes[16].setOrigin(0.16,0.01);
+        this.cortes[17].setOrigin(0,0.2);
+
+        this.hb[18].setOrigin(0,0.15);
+        this.hb[19].setOrigin(0.19,0.18);
+        this.hb[20].setOrigin(0.16,0.18);
+        this.hb[21].setOrigin(0,0.18);
+        this.hb[22].setOrigin(0,0.18);
+        this.hb[23].setOrigin(0.19,0.15);
+
+        this.cortes[18].setOrigin(0,0.15);
+        this.cortes[19].setOrigin(0.19,0.18);
+        this.cortes[20].setOrigin(0.16,0.18);
+        this.cortes[21].setOrigin(0,0.18);
+        this.cortes[22].setOrigin(0,0.18);
+        this.cortes[23].setOrigin(0.19,0.15);
+
+        this.hb[25].setOrigin(0,0.19);
+        this.hb[26].setOrigin(0.16,0.19);
+        this.hb[27].setOrigin(0,0.19);
+        this.hb[28].setOrigin(0.16,0.19);
+        
+        this.cortes[25].setOrigin(0,0.19);
+        this.cortes[26].setOrigin(0.16,0.19);
+        this.cortes[27].setOrigin(0,0.19);
+        this.cortes[28].setOrigin(0.16,0.19);
 
         this.input.on(eventos.DRAG_START, (pointer, obj, dragX, dragY) => {
-            obj.setScale(0.9);
+            obj.setScale(0.7);
         });
 
         this.input.on(eventos.DRAG, (pointer, obj, dragX, dragY) => {
             obj.x = dragX;
             obj.y = dragY;
+            obj.setScale(1);
         });
 
         this.input.on(eventos.DROP, (pointer, obj, dropzone) => {

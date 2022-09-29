@@ -116,8 +116,8 @@ class Bootloader extends Phaser.Scene{
         
         update(time, delta) 
         {
-            this.text2.setText('Score: ' + this.score);
-            this.text3.setText('Errors: ' + this.errores);
+           
+            
             for (let index = 0; index < this.arrayC.length / 2; index++) {
                 if (!this.arrayC[index].visible && !this.arrayC[(index - 19)*(-1)].visible && !this.arrayB[index]) {
                     this.arrayB[index] = true;
