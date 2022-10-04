@@ -21,12 +21,13 @@ class Bootloader extends Phaser.Scene{
         //     });
         this.load.image(['canvas1', 'Emperor']);
 
-        // this.load.spritesheet('king', 'Emperor.png', {
-            // frameWidth: 16,
-            // frameHeight: 25,
-            // margin: 1,
-            // spacing: 2
-            // });
+        this.load.spritesheet('king','Medieval King/Sprites/Idle.png',
+        {
+            frameWidth: 100,
+            frameHeight: 111,
+            // margin: 2,
+            spacing: 60
+        })
 
 
         this.load.atlas('tomato', 'tomato_atlas/tomato.png','tomato_atlas/tomato_atlas.json');
@@ -39,8 +40,9 @@ class Bootloader extends Phaser.Scene{
 
         
         this.add.image(0, 0, "canvas1").setOrigin(0, 0).setDepth(-1);
-        this.add.image(0, 0, "Emperor").setOrigin(0, 0).setDepth(2);
+        // this.add.image(0, 0, "Emperor").setOrigin(0, 0).setDepth(2);
 
+        this.king = this.add.sprite(70, 100, 'king', 0).setScale(3);
         //this.puntero = this.add.image(0, 0, 'cursor2').setOrigin(0.15, 0.15).setDepth(5);
         //this.canvas.setDepth(-1);
 
@@ -52,57 +54,19 @@ class Bootloader extends Phaser.Scene{
 
         this.anims.create({
             // Nombre de la animación
-            key: 'tomato_camina',
+            key: 'king_indle',
             // Se cargan los frames por números
             // NOTA: generateFrameNames() se
             // usa cuando ya existe un Atlas
-            frames: this.anims.generateFrameNumbers('tomato_spacing', {
+            frames: this.anims.generateFrameNumbers('king', {
             start: 0,
             end: 7
             }),
             repeat: -1,
-            frameRate: 15
-            });
+            frameRate: 8
+        });
 
-            frames: this.anims.generateFrameNumbers('tomato_spacing', {
-                frames: [0, 1, 2, 3, 4, 5, 6, 7]
-                }),
-
-            this.tomato_spacing.anims.play('tomato_camina');
-
-            // this.anims.play('tomato_camina', this.tomato_spacing);
-            // console.log(this.anims.generateFrameNumbers('tomato_spacing', {
-            //     start: 0,
-            //     end: 7
-            //     }));
-
-            // this.anims.create({
-            //     key: 'tomato_camina',
-            //     frames: this.anims.generateFrameNumbers('tomato_spacing', {
-            //     start: 0,
-            //     end: 7,
-            //     }),
-            //     repeat: -1
-            //     });
-
-
-
-            this.tomato = this.add.sprite(100, 100, 'tomato').setScale(4);
-
-            this.anims.create({
-                key: 'tomato_walk',
-                frames: this.anims.generateFrameNames('tomato', {
-                prefix: 'tomato_animation_1_',
-                start: 0,
-                end: 7
-                }),
-                repeat: -1,
-                frameRate: 10
-                });
-
-                this.tomato.anims.play('tomato_walk');
-
-                
+        this.king.anims.play('king_indle');     
     }
 
     update(time, delta) {
