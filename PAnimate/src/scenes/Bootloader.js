@@ -69,41 +69,70 @@ class Bootloader extends Phaser.Scene{
             this.arrayCards[index] = this.add.image(130 + (index*434), 275, index).setOrigin(0,0).setScale(1.05).setTint(0x4A148C,0xEA80FC,0x37474F,0x000099);
         }
 
+        this.moon = this.add.sprite(270, 590, 'moon', 0).setScale(5);
+        this.anims.create({
+            // Nombre de la animación
+            key: 'moon_indle',
+            // Se cargan los frames por números
+            // NOTA: generateFrameNames() se
+            // usa cuando ya existe un Atlas
+            frames: this.anims.generateFrameNumbers('moon', {
+                start: 0,
+                end: 10
+            }),
+            repeat: -1,
+            frameRate: 12
+        });
         
-        
-        // // this.moon = this.add.sprite(270, 590, 'moon', 0).setScale(5);
-        // // this.anims.create({
-        // //     // Nombre de la animación
-        // //     key: 'moon_indle',
-        // //     // Se cargan los frames por números
-        // //     // NOTA: generateFrameNames() se
-        // //     // usa cuando ya existe un Atlas
-        // //     frames: this.anims.generateFrameNumbers('moon', {
-        // //         start: 0,
-        // //         end: 10
-        // //     }),
-        // //     repeat: -1,
-        // //     frameRate: 12
-        // // });
-        
-        // // this.moon.anims.play('moon_indle');
+        this.moon.anims.play('moon_indle');
 
-        // // this.king = this.add.sprite(550, 420, 'king', 0).setScale(6);
-        // // this.anims.create({
-        // //     // Nombre de la animación
-        // //     key: 'king_indle',
-        // //     // Se cargan los frames por números
-        // //     // NOTA: generateFrameNames() se
-        // //     // usa cuando ya existe un Atlas
-        // //     frames: this.anims.generateFrameNumbers('king', {
-        // //         start: 0,
-        // //         end: 7
-        // //     }),
-        // //     repeat: -1,
-        // //     frameRate: 8
-        // // });
+        this.king = this.add.sprite(550, 420, 'king', 0).setScale(6);
+        this.anims.create({
+            // Nombre de la animación
+            key: 'king_indle',
+            // Se cargan los frames por números
+            // NOTA: generateFrameNames() se
+            // usa cuando ya existe un Atlas
+            frames: this.anims.generateFrameNumbers('king', {
+                start: 0,
+                end: 7
+            }),
+            repeat: -1,
+            frameRate: 8
+        });
         
-        // // this.king.anims.play('king_indle');
+        this.king.anims.play('king_indle');
+
+        this.witch = this.add.sprite(1620, 575, 'witch_idle',0).setScale(6);
+        this.witch.anims.play('witch_idle'); //El argumento debe de ser el mismo nombre de la animacion 
+
+        const keyCodes = Phaser.Input.Keyboard.KeyCodes;
+        console.log(keyCodes);
+        const eventos = Phaser.Input.Events;
+        console.log(eventos);
+        this.teclas = this.input.keyboard.addKeys({
+            izq: keyCodes.A,
+            der: keyCodes.D,
+            sup: keyCodes.W,
+            powQ: keyCodes.Q,
+            powR: keyCodes.R,
+        });
+        this.teclas.izq.on('down', ()=>{
+            console.log('MOVER personaje izq');
+            this.witch.flipX = true;
+            this.witch.play('witch_run');
+        });
+        this.teclas.der.on('down', ()=>{
+            console.log('MOVER personaje der');
+            this.witch.flipX = false;
+            this.witch.play('witch_run');
+        });
+        this.teclas.powQ.on('down', ()=>{
+            this.witch.play('witch_attack');
+        });
+        this.teclas.powR.on('down', ()=>{
+            this.witch.play('witch_charge');
+        });
     }
     
     update(time, delta) {
