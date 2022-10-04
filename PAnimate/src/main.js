@@ -9,8 +9,8 @@ const config = {
     type: Phaser.AUTO,
     scale: {
         parent: "phaser_container",
-        width: 2000,
-        height: 900,
+        width: 1920,
+        height: 1080,
         mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH
     },		        //Tipo de renderizado (WEBGL, CANVAS, AUTO)

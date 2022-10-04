@@ -16,7 +16,7 @@ class Start extends Phaser.Scene {
     }
     preload() {
         this.load.path = './assets/';
-        this.load.image(['puntero','fondo4','title2', 'start'
+        this.load.image(['puntero','FondoStart','title2', 'start'
         ]);
         this.load.audio({
             key: "musica",
@@ -36,23 +36,23 @@ class Start extends Phaser.Scene {
        // this.add.image(0, 0, "fondo2").setOrigin(0.0).setDepth(-1);
 
         this.bgs = [
-            this.add.image(0, 0, "fondo4").setOrigin(0, 0).setDepth(-1).setScale(2),
-            this.add.image(0, 0, "fondo4").setOrigin(0, 0).setDepth(-1).setScale(2),
+            this.add.image(0, 0, "FondoStart").setOrigin(0, 0).setDepth(-1).setScale(2),
+            this.add.image(0, 0, "FondoStart").setOrigin(0, 0).setDepth(-1).setScale(2),
         ];
         this.bgs[1].x = - this.bgs[0].displayWidth;
 
         this.title = this.add.image(
             this.width / 2,
-            this.height / 2 - 15,
+            this.height / 2 - 60,
             "title2",
-        ).setDepth(0);
+        ).setDepth(0).setScale(1.5);
 
 
         this.start = this.add.image(
             this.width / 2,
-            this.height / 2 + 80,
+            this.height / 2 + 100,
             "start",
-        ).setDepth(0).setInteractive();
+        ).setDepth(0).setInteractive().setScale(1.5);
 
 
         const events = Phaser.Input.Events;
