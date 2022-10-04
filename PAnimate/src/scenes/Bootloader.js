@@ -104,6 +104,36 @@ class Bootloader extends Phaser.Scene{
         // // });
         
         // // this.king.anims.play('king_indle');
+        this.witch = this.add.sprite(1180, 560, 'witch_idle',0).setScale(9);
+        this.witch.anims.play('witch_idle'); //El argumento debe de ser el mismo nombre de la animacion 
+
+        const keyCodes = Phaser.Input.Keyboard.KeyCodes;
+        console.log(keyCodes);
+        const eventos = Phaser.Input.Events;
+        console.log(eventos);
+        this.teclas = this.input.keyboard.addKeys({
+            izq: keyCodes.A,
+            der: keyCodes.D,
+            sup: keyCodes.W,
+            powQ: keyCodes.Q,
+            powR: keyCodes.R,
+        });
+        this.teclas.izq.on('down', ()=>{
+            console.log('MOVER personaje izq');
+            this.witch.flipX = true;
+            this.witch.play('witch_run');
+        });
+        this.teclas.der.on('down', ()=>{
+            console.log('MOVER personaje der');
+            this.witch.flipX = false;
+            this.witch.play('witch_run');
+        });
+        this.teclas.powQ.on('down', ()=>{
+            this.witch.play('witch_attack');
+        });
+        this.teclas.powR.on('down', ()=>{
+            this.witch.play('witch_charge');
+        });
     }
     
     update(time, delta) {
