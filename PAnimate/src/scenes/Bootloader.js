@@ -54,7 +54,7 @@ class Bootloader extends Phaser.Scene{
         this.load.animation('witch_attack', 'witch/witch_attack_anim/witch_attack_anim.json');  
         this.load.atlas('witch_charge', 'witch/witch_charge/witch_charge.png', //IMG con los recortes unidos y hecho el json
         'witch/witch_charge/witch_charge_atlas.json');
-        this.load.animation('witch_charge', 'witch/witch_charge_anim/witch_charge_anim.json');  4
+        this.load.animation('witch_charge', 'witch/witch_charge_anim/witch_charge_anim.json');
         this.load.atlas('witch_run', 'witch/witch_run/witch_run.png', //IMG con los recortes unidos y hecho el json
         'witch/witch_run/witch_run_atlas.json');
         this.load.animation('witch_run', 'witch/witch_run_anim/witch_run_anim.json');  
@@ -105,7 +105,7 @@ class Bootloader extends Phaser.Scene{
         
         this.king.anims.play('king_indle');
 
-        this.witch = this.add.sprite(1600, 575, 'witch_idle',0).setScale(6);
+        this.witch = this.add.sprite(1620, 575, 'witch_idle',0).setScale(5);
         this.witch.anims.play('witch_idle'); //El argumento debe de ser el mismo nombre de la animacion 
 
         const keyCodes = Phaser.Input.Keyboard.KeyCodes;
@@ -120,23 +120,34 @@ class Bootloader extends Phaser.Scene{
             powR: keyCodes.R,
         });
         this.teclas.izq.on('down', ()=>{
-            console.log('MOVER personaje izq');
+            // console.log('MOVER personaje izq');
             this.witch.flipX = true;
             this.witch.play('witch_run');
         });
         this.teclas.der.on('down', ()=>{
-            console.log('MOVER personaje der');
+            // console.log('MOVER personaje der');
             this.witch.flipX = false;
             this.witch.play('witch_run');
         });
         this.teclas.powQ.on('down', ()=>{
+            if (this.witch.flipX == false) {
+                this.witch.x = 1770;
+            }
+            else
+            {
+                this.witch.x = 1470;
+            }
+            this.witch.play('witch_attack');
+        });
+        this.teclas.powQ.on('up', ()=>{
+            this.witch.x = 1620;
             this.witch.play('witch_attack');
         });
         this.teclas.powR.on('down', ()=>{
             this.witch.play('witch_charge');
         });
 
-        this.add.image(0, 0, "fondoEMP").setOrigin(0, 0);
+        this.add.image(0, 0, "fondoEMP").setOrigin(-0.01, 0);
     }
     
     update(time, delta) {
@@ -149,21 +160,21 @@ class Bootloader extends Phaser.Scene{
         //     this.witch.x -= 3;
         // }
 
-        // // if(Phaser.Input.Keyboard.JustDown(this.teclas.powQ)){
-        // //     this.witch.play("witch_attack");
-        // // }
-        // if(Phaser.Input.Keyboard.JustUp(this.teclas.izq)){
-        //     this.witch.play("witch_idle");
+        // if(Phaser.Input.Keyboard.JustDown(this.teclas.powQ)){
+        //     this.witch.play("witch_attack");
         // }
-        // if(Phaser.Input.Keyboard.JustUp(this.teclas.der)){
-        //     this.witch.play("witch_idle");
-        // }
-        // if(Phaser.Input.Keyboard.JustUp(this.teclas.powQ)){
-        //     this.witch.play("witch_idle");
-        // }
-        // if(Phaser.Input.Keyboard.JustUp(this.teclas.powR)){
-        //     this.witch.play("witch_idle");
-        // }
+        if(Phaser.Input.Keyboard.JustUp(this.teclas.izq)){
+            this.witch.play("witch_idle");
+        }
+        if(Phaser.Input.Keyboard.JustUp(this.teclas.der)){
+            this.witch.play("witch_idle");
+        }
+        if(Phaser.Input.Keyboard.JustUp(this.teclas.powQ)){
+            this.witch.play("witch_idle");
+        }
+        if(Phaser.Input.Keyboard.JustUp(this.teclas.powR)){
+            this.witch.play("witch_idle");
+        }
     }
 }
 
