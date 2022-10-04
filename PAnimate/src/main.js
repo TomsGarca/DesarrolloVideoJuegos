@@ -1,29 +1,38 @@
-import Bootloader from './Bootloader.js';
+import Bootloader from "./scenes/Bootloader.js"
+import Start from "./scenes/Start.js";
 
 const config = {
-    title: "Personaje Animado",
-    version: "0.0.1",
+    //zoom: 1.5,
+    title: "Curso Phaser",		    //Nombre del juego (opcional)
+    url: "http://google.es",	    //Dirección de la página del juego (opcional)
+    version: "0.0.1",		        //Versión alfanumérica (opcional)
     type: Phaser.AUTO,
     scale: {
         parent: "phaser_container",
-        width: 400,
-        height: 400,
+        width: 1000,
+        height: 450,
         mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH
-    },
-    backgroundColor: "#4834d4",
-    pixelArt: true,
-    physics: {
-        default: "arcade",
-        "arcade": {
-            gravity: {
-                y: 500
-            }
-        }
-    },
+    },		        //Tipo de renderizado (WEBGL, CANVAS, AUTO)
+                                    // AUTO: busca primero WEBGL y si no está disponible eligirá CANVAS
+    //width: 640,			            //Ancho de pantalla del juego
+    //height: 360, 			        //Alto de pantalla del juego
+    //parent: "contenedor",		    //Nombre del id del elemento <div> en el index.html
+                                    // se refiere a dónde se pondrá el canvas o lienzo
+    pixelArt: true,		            //Diseño con pixeles definidos (no borrosos)
+    backgroundColor: "#000000", 	//Color de fondo del canvas ()
     scene: [
-        Bootloader
-    ]
+        Start,
+        Bootloader],    //Aquí irá la lista de scenas del juego
+    banner:{
+        hidePhaser: true,
+        text: "#fff00f",
+        background: [
+                "#16a085",
+                "#2ecc71",
+                "#e74c3c", 
+                "#000000"]
+    }
 };
 
-new Phaser.Game(config);
+const game = new Phaser.Game(config);
