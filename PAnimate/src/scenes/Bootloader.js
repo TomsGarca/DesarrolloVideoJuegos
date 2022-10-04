@@ -19,7 +19,7 @@ class Bootloader extends Phaser.Scene{
         //     frameWidth: 16,
         //     frameHeight: 25
         //     });
-        this.load.image(['canvas1', 'Emperor']);
+        this.load.image(['fondo', 'Emperor']);
 
         this.load.spritesheet('king','Medieval King/Sprites/Idle.png',
         {
@@ -30,16 +30,16 @@ class Bootloader extends Phaser.Scene{
         })
 
 
-        this.load.atlas('tomato', 'tomato_atlas/tomato.png','tomato_atlas/tomato_atlas.json');
+        // this.load.atlas('tomato', 'tomato_atlas/tomato.png','tomato_atlas/tomato_atlas.json');
 
             //this.load.atlas('tomato', 'tomato_atlas/tomato.png', 'tomato_atlas/tomato_atlas.json');
-        this.load.animation('tomatoAnim', 'tomato_atlas/tomato_anim.json');
+        // this.load.animation('tomatoAnim', 'tomato_atlas/tomato_anim.json');
     }
 
     create() {
 
         
-        this.add.image(0, 0, "canvas1").setOrigin(0, 0).setDepth(-1);
+        this.add.image(0, 0, "fondo").setOrigin(0, 0).setDepth(-1);
         // this.add.image(0, 0, "Emperor").setOrigin(0, 0).setDepth(2);
 
         this.king = this.add.sprite(550, 420, 'king', 0).setScale(6);

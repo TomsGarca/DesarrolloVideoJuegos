@@ -16,7 +16,7 @@ class Start extends Phaser.Scene {
     }
     preload() {
         this.load.path = './assets/';
-        this.load.image(['puntero','FondoStart','title2', 'start'
+        this.load.image(['Puntero','FondoStart','Title', 'Start'
         ]);
         this.load.audio({
             key: "musica",
@@ -32,7 +32,7 @@ class Start extends Phaser.Scene {
             loop: true
         });
 
-        this.puntero = this.add.image(0, 0, 'puntero').setOrigin(0.15, 0.15).setDepth(5);
+        this.puntero = this.add.image(0, 0, 'Puntero').setOrigin(0.15, 0.15).setDepth(5).setScale(1.5);
        // this.add.image(0, 0, "fondo2").setOrigin(0.0).setDepth(-1);
 
         this.bgs = [
@@ -44,14 +44,14 @@ class Start extends Phaser.Scene {
         this.title = this.add.image(
             this.width / 2,
             this.height / 2 - 60,
-            "title2",
+            "Title",
         ).setDepth(0).setScale(1.5);
 
 
         this.start = this.add.image(
             this.width / 2,
             this.height / 2 + 100,
-            "start",
+            "Start",
         ).setDepth(0).setInteractive().setScale(1.5);
 
 
