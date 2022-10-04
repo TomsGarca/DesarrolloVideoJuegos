@@ -28,6 +28,7 @@ class Bootloader extends Phaser.Scene{
         ]);
 
         this.arrayCards = new Array(4);
+        this.arrayFront = new Array(4);
         this.load.spritesheet('moon','Hero Knight/Idle.png',
         {
             frameWidth: 180,
@@ -80,63 +81,70 @@ class Bootloader extends Phaser.Scene{
         }
 
         this.moon = this.add.sprite(270, 590, 'moon', 0).setScale(5);
-        this.anims.create({
-            // Nombre de la animación
-            key: 'moon_indle',
-            // Se cargan los frames por números
-            // NOTA: generateFrameNames() se
-            // usa cuando ya existe un Atlas
-            frames: this.anims.generateFrameNumbers('moon', {
-                start: 0,
-                end: 10
-            }),
-            repeat: -1,
-            frameRate: 12
-        });
+        // this.anims.create({
+        //     // Nombre de la animación
+        //     key: 'moon_indle',
+        //     // Se cargan los frames por números
+        //     // NOTA: generateFrameNames() se
+        //     // usa cuando ya existe un Atlas
+        //     frames: this.anims.generateFrameNumbers('moon', {
+        //         start: 0,
+        //         end: 10
+        //     }),
+        //     repeat: -1,
+        //     frameRate: 12
+        // });
         
-        this.moon.anims.play('moon_indle');
+        // this.moon.anims.play('moon_indle');
 
         this.king = this.add.sprite(550, 420, 'king', 0).setScale(6);
-        this.anims.create({
-            // Nombre de la animación
-            key: 'king_indle',
-            // Se cargan los frames por números
-            // NOTA: generateFrameNames() se
-            // usa cuando ya existe un Atlas
-            frames: this.anims.generateFrameNumbers('king', {
-                start: 0,
-                end: 7
-            }),
-            repeat: -1,
-            frameRate: 8
-        });
+        // this.anims.create({
+        //     // Nombre de la animación
+        //     key: 'king_indle',
+        //     // Se cargan los frames por números
+        //     // NOTA: generateFrameNames() se
+        //     // usa cuando ya existe un Atlas
+        //     frames: this.anims.generateFrameNumbers('king', {
+        //         start: 0,
+        //         end: 7
+        //     }),
+        //     repeat: -1,
+        //     frameRate: 8
+        // });
         
-        this.king.anims.play('king_indle');
+        // this.king.anims.play('king_indle');
 
-        this.hiero = this.add.sprite(1163, 270, 'hiero', 0).setScale(8);
-        this.anims.create({
-            // Nombre de la animación
-            key: 'hiero_idle',
-            // Se cargan los frames por números
-            // NOTA: generateFrameNames() se
-            // usa cuando ya existe un Atlas
-            frames: this.anims.generateFrameNumbers('hiero', {
-                start: 0,
-                end: 15
-            }),
-            repeat: -1,
-            frameRate: 15
-        });
+        this.hiero = this.add.sprite(1180, 270, 'hiero', 0).setScale(8);
+        // this.anims.create({
+        //     // Nombre de la animación
+        //     key: 'hiero_idle',
+        //     // Se cargan los frames por números
+        //     // NOTA: generateFrameNames() se
+        //     // usa cuando ya existe un Atlas
+        //     frames: this.anims.generateFrameNumbers('hiero', {
+        //         start: 0,
+        //         end: 15
+        //     }),
+        //     repeat: -1,
+        //     frameRate: 15
+        // });
         
-        this.hiero.anims.play('hiero_idle');
+        // this.hiero.anims.play('hiero_idle');
 
-        this.witch = this.add.sprite(1600, 575, 'witch_idle',0).setScale(6);
-        this.witch.anims.play('witch_idle'); //El argumento debe de ser el mismo nombre de la animacion 
+        this.witch = this.add.sprite(1620, 575, 'witch_idle',0).setScale(6);
+        // this.witch.anims.play('witch_idle'); //El argumento debe de ser el mismo nombre de la animacion 
 
         const keyCodes = Phaser.Input.Keyboard.KeyCodes;
         console.log(keyCodes);
         const eventos = Phaser.Input.Events;
         console.log(eventos);
+        
+        this.add.image(0, 0, "fondoEMP").setOrigin(-0.01, 0);
+        
+        for (let index = 0; index < this.arrayCards.length; index++) {
+            this.arrayFront[index] = this.add.image(127 + (index*434), 269, index+4).setOrigin(0,0).setScale(1.05);
+        }
+        
         this.teclas = this.input.keyboard.addKeys({
             izq: keyCodes.A,
             der: keyCodes.D,
@@ -171,8 +179,7 @@ class Bootloader extends Phaser.Scene{
         this.teclas.powR.on('down', ()=>{
             this.witch.play('witch_charge');
         });
-
-        this.add.image(0, 0, "fondoEMP").setOrigin(-0.01, 0);
+        // .setTint(0x4A148C,0xEA80FC,0x37474F,0x000099)
     }
     
     update(time, delta) {
