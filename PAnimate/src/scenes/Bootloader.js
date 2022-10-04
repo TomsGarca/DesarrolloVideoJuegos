@@ -42,7 +42,7 @@ class Bootloader extends Phaser.Scene{
         this.add.image(0, 0, "canvas1").setOrigin(0, 0).setDepth(-1);
         // this.add.image(0, 0, "Emperor").setOrigin(0, 0).setDepth(2);
 
-        this.king = this.add.sprite(70, 100, 'king', 0).setScale(3);
+        this.king = this.add.sprite(550, 420, 'king', 0).setScale(6);
         //this.puntero = this.add.image(0, 0, 'cursor2').setOrigin(0.15, 0.15).setDepth(5);
         //this.canvas.setDepth(-1);
 
