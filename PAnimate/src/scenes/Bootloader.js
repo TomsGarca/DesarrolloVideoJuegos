@@ -87,7 +87,7 @@ class Bootloader extends Phaser.Scene{
         
         this.king.anims.play('king_indle');
         ///// WITCH
-        this.witch = this.add.sprite(100, 100, 'witch_idle',0).setScale(4);
+        this.witch = this.add.sprite(1180, 560, 'witch_idle',0).setScale(9);
         this.witch.anims.play('witch_idle'); //El argumento debe de ser el mismo nombre de la animacion 
 
         const keyCodes = Phaser.Input.Keyboard.KeyCodes;
