@@ -1,3 +1,5 @@
+import { GameObjects } from "phaser";
+
 class Bootloader extends Phaser.Scene{
     constructor(){
         super({
@@ -12,8 +14,20 @@ class Bootloader extends Phaser.Scene{
     preload() {
         this.load.path = './assets/';
     
-        this.load.image(['fondo']);
+        this.load.image("fondo", "Fondo.png");
 
+        this.load.image([
+            { key: '0', url: ['Cards/CardBN1.png'] },
+            { key: '1', url: ['Cards/CardBN2.png'] },
+            { key: '2', url: ['Cards/CardBN3.png'] },
+            { key: '3', url: ['Cards/CardBN4.png'] },
+            { key: '4', url: ['Cards/Card1.png'] },
+            { key: '5', url: ['Cards/Card2.png'] },
+            { key: '6', url: ['Cards/Card3.png'] },
+            { key: '7', url: ['Cards/Card4.png'] }
+        ]);
+
+        this.arrayCards = new Array(4);
         this.load.spritesheet('moon','Hero Knight/Idle.png',
         {
             frameWidth: 180,
@@ -37,40 +51,46 @@ class Bootloader extends Phaser.Scene{
         
         
         this.add.image(0, 0, "fondo").setOrigin(0, 0).setDepth(-1);
-        
-        this.moon = this.add.sprite(270, 590, 'moon', 0).setScale(5);
-        this.anims.create({
-            // Nombre de la animación
-            key: 'moon_indle',
-            // Se cargan los frames por números
-            // NOTA: generateFrameNames() se
-            // usa cuando ya existe un Atlas
-            frames: this.anims.generateFrameNumbers('moon', {
-                start: 0,
-                end: 10
-            }),
-            repeat: -1,
-            frameRate: 12
-        });
-        
-        this.moon.anims.play('moon_indle');
 
-        this.king = this.add.sprite(550, 420, 'king', 0).setScale(6);
-        this.anims.create({
-            // Nombre de la animación
-            key: 'king_indle',
-            // Se cargan los frames por números
-            // NOTA: generateFrameNames() se
-            // usa cuando ya existe un Atlas
-            frames: this.anims.generateFrameNumbers('king', {
-                start: 0,
-                end: 7
-            }),
-            repeat: -1,
-            frameRate: 8
-        });
+        for (let index = 0; index < this.arrayCards.length; index++) {
+            this.arrayCards[index] = this.add.image(130 + (index*434), 275, index).setOrigin(0,0).setScale(1.05).setTint(0x4A148C,0xEA80FC,0x37474F,0x000099);
+        }
+
         
-        this.king.anims.play('king_indle');
+        
+        // // this.moon = this.add.sprite(270, 590, 'moon', 0).setScale(5);
+        // // this.anims.create({
+        // //     // Nombre de la animación
+        // //     key: 'moon_indle',
+        // //     // Se cargan los frames por números
+        // //     // NOTA: generateFrameNames() se
+        // //     // usa cuando ya existe un Atlas
+        // //     frames: this.anims.generateFrameNumbers('moon', {
+        // //         start: 0,
+        // //         end: 10
+        // //     }),
+        // //     repeat: -1,
+        // //     frameRate: 12
+        // // });
+        
+        // // this.moon.anims.play('moon_indle');
+
+        // // this.king = this.add.sprite(550, 420, 'king', 0).setScale(6);
+        // // this.anims.create({
+        // //     // Nombre de la animación
+        // //     key: 'king_indle',
+        // //     // Se cargan los frames por números
+        // //     // NOTA: generateFrameNames() se
+        // //     // usa cuando ya existe un Atlas
+        // //     frames: this.anims.generateFrameNumbers('king', {
+        // //         start: 0,
+        // //         end: 7
+        // //     }),
+        // //     repeat: -1,
+        // //     frameRate: 8
+        // // });
+        
+        // // this.king.anims.play('king_indle');
     }
     
     update(time, delta) {
