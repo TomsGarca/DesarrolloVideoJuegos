@@ -44,6 +44,14 @@ class Bootloader extends Phaser.Scene{
             spacing: 60
         })
 
+        this.load.spritesheet('hiero','Hiero/Idle.png',
+        {
+            frameWidth: 288,
+            frameHeight: 128,
+            //margin: 2,
+            //spacing: 60
+        })
+
         // WITCH IDLE                          
         this.load.atlas('witch_idle', 'witch/witch_idle/witch_idle.png', //IMG con los recortes unidos y hecho el json
         'witch/witch_idle/witch_idle_atlas.json');
@@ -104,6 +112,23 @@ class Bootloader extends Phaser.Scene{
         });
         
         this.king.anims.play('king_indle');
+
+        this.hiero = this.add.sprite(1163, 270, 'hiero', 0).setScale(8);
+        this.anims.create({
+            // Nombre de la animación
+            key: 'hiero_idle',
+            // Se cargan los frames por números
+            // NOTA: generateFrameNames() se
+            // usa cuando ya existe un Atlas
+            frames: this.anims.generateFrameNumbers('hiero', {
+                start: 0,
+                end: 15
+            }),
+            repeat: -1,
+            frameRate: 15
+        });
+        
+        this.hiero.anims.play('hiero_idle');
 
         this.witch = this.add.sprite(1600, 575, 'witch_idle',0).setScale(6);
         this.witch.anims.play('witch_idle'); //El argumento debe de ser el mismo nombre de la animacion 
