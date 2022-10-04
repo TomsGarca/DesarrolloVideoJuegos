@@ -149,21 +149,21 @@ class Bootloader extends Phaser.Scene{
         //     this.witch.x -= 3;
         // }
 
-        // if(Phaser.Input.Keyboard.JustDown(this.teclas.powQ)){
-        //     this.witch.play("witch_attack");
+        // // if(Phaser.Input.Keyboard.JustDown(this.teclas.powQ)){
+        // //     this.witch.play("witch_attack");
+        // // }
+        // if(Phaser.Input.Keyboard.JustUp(this.teclas.izq)){
+        //     this.witch.play("witch_idle");
         // }
-        if(Phaser.Input.Keyboard.JustUp(this.teclas.izq)){
-            this.witch.play("witch_idle");
-        }
-        if(Phaser.Input.Keyboard.JustUp(this.teclas.der)){
-            this.witch.play("witch_idle");
-        }
-        if(Phaser.Input.Keyboard.JustUp(this.teclas.powQ)){
-            this.witch.play("witch_idle");
-        }
-        if(Phaser.Input.Keyboard.JustUp(this.teclas.powR)){
-            this.witch.play("witch_idle");
-        }
+        // if(Phaser.Input.Keyboard.JustUp(this.teclas.der)){
+        //     this.witch.play("witch_idle");
+        // }
+        // if(Phaser.Input.Keyboard.JustUp(this.teclas.powQ)){
+        //     this.witch.play("witch_idle");
+        // }
+        // if(Phaser.Input.Keyboard.JustUp(this.teclas.powR)){
+        //     this.witch.play("witch_idle");
+        // }
     }
 }
 
