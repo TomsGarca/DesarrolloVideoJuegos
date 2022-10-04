@@ -14,6 +14,7 @@ class Bootloader extends Phaser.Scene{
     
         this.load.image("fondo", "Fondo.png");
         this.load.image("fondoEMP", "FondoEmpty.png");
+        this.load.image('Puntero','Puntero.png');
 
 
         this.load.image([
@@ -73,7 +74,8 @@ class Bootloader extends Phaser.Scene{
 
     create() {
         
-        
+        this.puntero = this.add.image(0, 0, 'Puntero').setOrigin(0.15, 0.15).setDepth(5).setScale(1.5);
+
         this.add.image(0, 0, "fondo").setOrigin(0, 0).setDepth(-1);
 
         for (let index = 0; index < this.arrayCards.length; index++) {
@@ -137,7 +139,12 @@ class Bootloader extends Phaser.Scene{
         const keyCodes = Phaser.Input.Keyboard.KeyCodes;
         console.log(keyCodes);
         const eventos = Phaser.Input.Events;
-        console.log(eventos);
+
+        this.sys.canvas.style.cursor = 'none';
+        this.input.on(eventos.POINTER_MOVE, (evento) => {
+            this.puntero.x = evento.worldX;
+            this.puntero.y = evento.worldY;
+        });
         
         this.add.image(0, 0, "fondoEMP").setOrigin(-0.01, 0);
         
