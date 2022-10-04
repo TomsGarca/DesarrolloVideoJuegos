@@ -13,6 +13,8 @@ class Bootloader extends Phaser.Scene{
         this.load.path = './assets/';
     
         this.load.image("fondo", "Fondo.png");
+        this.load.image("fondoEMP", "FondoEmpty.png");
+
 
         this.load.image([
             { key: '0', url: ['Cards/CardBN1.png'] },
@@ -103,7 +105,7 @@ class Bootloader extends Phaser.Scene{
         
         this.king.anims.play('king_indle');
 
-        this.witch = this.add.sprite(1620, 575, 'witch_idle',0).setScale(6);
+        this.witch = this.add.sprite(1600, 575, 'witch_idle',0).setScale(6);
         this.witch.anims.play('witch_idle'); //El argumento debe de ser el mismo nombre de la animacion 
 
         const keyCodes = Phaser.Input.Keyboard.KeyCodes;
@@ -133,6 +135,8 @@ class Bootloader extends Phaser.Scene{
         this.teclas.powR.on('down', ()=>{
             this.witch.play('witch_charge');
         });
+
+        this.add.image(0, 0, "fondoEMP").setOrigin(0, 0);
     }
     
     update(time, delta) {
