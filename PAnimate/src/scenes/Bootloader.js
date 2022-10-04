@@ -19,33 +19,35 @@ class Bootloader extends Phaser.Scene{
         //     frameWidth: 16,
         //     frameHeight: 25
         //     });
-        this.load.image(['canvas1']);
+        this.load.image(['canvas1', 'Emperor']);
 
-        this.load.spritesheet('tomato_spacing', 'tomato_spacing/tomato_spacing.png', {
-            frameWidth: 16,
-            frameHeight: 25,
-            margin: 1,
-            spacing: 2
-            });
+        // this.load.spritesheet('king', 'Emperor.png', {
+            // frameWidth: 16,
+            // frameHeight: 25,
+            // margin: 1,
+            // spacing: 2
+            // });
 
 
-            this.load.atlas('tomato', 'tomato_atlas/tomato.png','tomato_atlas/tomato_atlas.json');
+        this.load.atlas('tomato', 'tomato_atlas/tomato.png','tomato_atlas/tomato_atlas.json');
 
             //this.load.atlas('tomato', 'tomato_atlas/tomato.png', 'tomato_atlas/tomato_atlas.json');
-            this.load.animation('tomatoAnim', 'tomato_atlas/tomato_anim.json');
+        this.load.animation('tomatoAnim', 'tomato_atlas/tomato_anim.json');
     }
 
     create() {
 
         
         this.add.image(0, 0, "canvas1").setOrigin(0, 0).setDepth(-1);
+        this.add.image(0, 0, "Emperor").setOrigin(0, 0).setDepth(2);
+
         //this.puntero = this.add.image(0, 0, 'cursor2').setOrigin(0.15, 0.15).setDepth(5);
         //this.canvas.setDepth(-1);
 
         //this.yoshi = this.add.image(100, 100, 'yoshi');
         // this.tomato = this.add.sprite(100, 100, 'tomato', 0);
         // this.tomato = this.add.sprite(100, 100, 'tomato', 0).setScale(4);
-        this.tomato_spacing = this.add.sprite(100, 220, 'tomato_spacing',0).setScale(4);
+        // this.tomato_spacing = this.add.sprite(100, 220, 'tomato_spacing',0).setScale(4);
 
 
         this.anims.create({
