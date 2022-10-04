@@ -69,14 +69,16 @@ class Bootloader extends Phaser.Scene{
         'witch/witch_run/witch_run_atlas.json');
         this.load.animation('witch_run', 'witch/witch_run_anim/witch_run_anim.json');  
         //El atributo key del json debe de ser el mismo que el primer argumento de .animation()  
-
-    }
-
-    create() {
         
-        this.puntero = this.add.image(0, 0, 'Puntero').setOrigin(0.15, 0.15).setDepth(5).setScale(1.5);
+    }
+    
+    create() {
 
         this.add.image(0, 0, "fondo").setOrigin(0, 0).setDepth(-1);
+        this.puntero = this.add.image(0, 0, 'Puntero').setOrigin(0.15, 0.15).setDepth(5).setScale(1.5);
+        
+        const keyCodes = Phaser.Input.Keyboard.KeyCodes;
+        const eventos = Phaser.Input.Events;
 
         for (let index = 0; index < this.arrayCards.length; index++) {
             this.arrayCards[index] = this.add.image(130 + (index*434), 275, index).setOrigin(0,0).setScale(1.05).setTint(0x4A148C,0xEA80FC,0x37474F,0x000099);
@@ -136,9 +138,6 @@ class Bootloader extends Phaser.Scene{
         this.witch = this.add.sprite(1620, 575, 'witch_idle',0).setScale(6);
         // this.witch.anims.play('witch_idle'); //El argumento debe de ser el mismo nombre de la animacion 
 
-        const keyCodes = Phaser.Input.Keyboard.KeyCodes;
-        console.log(keyCodes);
-        const eventos = Phaser.Input.Events;
 
         this.sys.canvas.style.cursor = 'none';
         this.input.on(eventos.POINTER_MOVE, (evento) => {
@@ -149,8 +148,20 @@ class Bootloader extends Phaser.Scene{
         this.add.image(0, 0, "fondoEMP").setOrigin(-0.01, 0);
         
         for (let index = 0; index < this.arrayCards.length; index++) {
-            this.arrayFront[index] = this.add.image(127 + (index*434), 269, index+4).setOrigin(0,0).setScale(1.05);
+            this.arrayFront[index] = this.add.image(127 + (index*434), 269, index+4).setOrigin(0,0).setScale(1.05).setInteractive();
         }
+
+        this.input.on(eventos.GAMEOBJECT_OVER, (pointer, gameObject) => {
+
+            gameObject.setTint(0x4A148C,0xEA80FC,0x37474F,0x000099);
+            // gameObject.setTint(0x3b1771,0x4040ff,0x19e619,0x3b1771);
+            // gameObject.setTint(0x2C148C,0x2C148C,0x2C148C,0x2C148C);
+        });
+
+        this.input.on(eventos.GAMEOBJECT_OUT, (pointer, gameObject) => {
+
+            gameObject.clearTint();
+        });
         
         this.teclas = this.input.keyboard.addKeys({
             izq: keyCodes.A,
@@ -191,15 +202,15 @@ class Bootloader extends Phaser.Scene{
     
     update(time, delta) {
         // if(this.teclas.der.isDown){
-        //     console.log('derecha');
-        //     this.witch.x += 3;
+            //     console.log('derecha');
+            //     this.witch.x += 3;
         // }
         // if(this.teclas.izq.isDown){
-        //     console.log('izq');
-        //     this.witch.x -= 3;
-        // }
-
-        // if(Phaser.Input.Keyboard.JustDown(this.teclas.powQ)){
+            //     console.log('izq');
+            //     this.witch.x -= 3;
+            // }
+            
+            // if(Phaser.Input.Keyboard.JustDown(this.teclas.powQ)){
         //     this.witch.play("witch_attack");
         // }
         if(Phaser.Input.Keyboard.JustUp(this.teclas.izq)){
