@@ -15,6 +15,7 @@ class Bootloader extends Phaser.Scene{
         this.load.image("fondo", "Fondo.png");
         this.load.image("fondoEMP", "FondoEmpty.png");
         this.load.image('Puntero','Puntero.png');
+        this.load.image("btn_reset","button_reset.png");
 
 
         this.load.image([
@@ -69,7 +70,6 @@ class Bootloader extends Phaser.Scene{
         'witch/witch_run/witch_run_atlas.json');
         this.load.animation('witch_run', 'witch/witch_run_anim/witch_run_anim.json');  
         //El atributo key del json debe de ser el mismo que el primer argumento de .animation()  
-        
     }
     
     create() {
@@ -77,13 +77,15 @@ class Bootloader extends Phaser.Scene{
         this.add.image(0, 0, "fondo").setOrigin(0, 0).setDepth(-1);
         this.puntero = this.add.image(0, 0, 'Puntero').setOrigin(0.15, 0.15).setDepth(5).setScale(1.5);
         
+        this.btn_reset = this.add.image(1600, 950, "btn_reset").setOrigin(0,0).setDepth(4).setScale(0.1).setInteractive();
+        this.btn_reset.valor = "boton";
         const keyCodes = Phaser.Input.Keyboard.KeyCodes;
         const eventos = Phaser.Input.Events;
 
         for (let index = 0; index < this.arrayCards.length; index++) {
             this.arrayCards[index] = this.add.image(130 + (index*434), 275, index).setOrigin(0,0).setScale(1.05).setTint(0x4A148C,0xEA80FC,0x37474F,0x000099);
         }
-
+        this.condVoltear = false;
         this.moon = this.add.sprite(270, 590, 'moon', 0).setScale(5);
         // this.anims.create({
         //     // Nombre de la animación
@@ -152,14 +154,38 @@ class Bootloader extends Phaser.Scene{
         }
 
         this.input.on(eventos.GAMEOBJECT_OVER, (pointer, gameObject) => {
-
+            console.log(eventos);
             gameObject.setTint(0x4A148C,0xEA80FC,0x37474F,0x000099);
             // gameObject.setTint(0x3b1771,0x4040ff,0x19e619,0x3b1771);
             // gameObject.setTint(0x2C148C,0x2C148C,0x2C148C,0x2C148C);
         });
 
-        this.input.on(eventos.GAMEOBJECT_OUT, (pointer, gameObject) => {
+        this.input.on(eventos.GAMEOBJECT_DOWN, (pointer, gameObject) => {
+            console.log("click");
+            //gameObject.setDepth(2);
+            //gameObject.setDepth(10);
+            if(gameObject.valor == "boton")
+            {
+                console.log("diste click al boton dentro de la funcion general");
+                this.condVoltear = false;
+                for(let index = 0; index < this.arrayFront.length; index++){
+                    this.arrayFront[index].visible = true;    
+                }
+            }
+            else
+            {
+                if(this.condVoltear == false){
+                    gameObject.visible = false;
+                    this.condVoltear = true;
+                }
+                else
+                {
+                    console.log("Character already selected!!!");
+                }
+                }
+        });
 
+        this.input.on(eventos.GAMEOBJECT_OUT, (pointer, gameObject) => {
             gameObject.clearTint();
         });
         
@@ -197,6 +223,10 @@ class Bootloader extends Phaser.Scene{
         this.teclas.powR.on('down', ()=>{
             this.witch.play('witch_charge');
         });
+        this.btn_reset.on('pointer_down', function() {
+           
+        }
+        );
         // .setTint(0x4A148C,0xEA80FC,0x37474F,0x000099)
     }
     
@@ -225,6 +255,8 @@ class Bootloader extends Phaser.Scene{
         if(Phaser.Input.Keyboard.JustUp(this.teclas.powR)){
             this.witch.play("witch_idle");
         }
+       
+        
     }
 }
 
