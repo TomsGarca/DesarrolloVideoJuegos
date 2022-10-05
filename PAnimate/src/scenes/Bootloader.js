@@ -87,53 +87,53 @@ class Bootloader extends Phaser.Scene{
         }
         this.condVoltear = false;
         this.moon = this.add.sprite(270, 590, 'moon', 0).setScale(5);
-        // this.anims.create({
-        //     // Nombre de la animación
-        //     key: 'moon_indle',
-        //     // Se cargan los frames por números
-        //     // NOTA: generateFrameNames() se
-        //     // usa cuando ya existe un Atlas
-        //     frames: this.anims.generateFrameNumbers('moon', {
-        //         start: 0,
-        //         end: 10
-        //     }),
-        //     repeat: -1,
-        //     frameRate: 12
-        // });
+         this.anims.create({
+             // Nombre de la animación
+             key: 'moon_indle',
+             // Se cargan los frames por números
+             // NOTA: generateFrameNames() se
+             // usa cuando ya existe un Atlas
+             frames: this.anims.generateFrameNumbers('moon', {
+                 start: 0,
+                 end: 10
+             }),
+             repeat: -1,
+             frameRate: 12
+         });
         
         // this.moon.anims.play('moon_indle');
 
         this.king = this.add.sprite(550, 420, 'king', 0).setScale(6);
-        // this.anims.create({
-        //     // Nombre de la animación
-        //     key: 'king_indle',
-        //     // Se cargan los frames por números
-        //     // NOTA: generateFrameNames() se
-        //     // usa cuando ya existe un Atlas
-        //     frames: this.anims.generateFrameNumbers('king', {
-        //         start: 0,
-        //         end: 7
-        //     }),
-        //     repeat: -1,
-        //     frameRate: 8
-        // });
+         this.anims.create({
+             // Nombre de la animación
+             key: 'king_indle',
+             // Se cargan los frames por números
+             // NOTA: generateFrameNames() se
+             // usa cuando ya existe un Atlas
+             frames: this.anims.generateFrameNumbers('king', {
+                 start: 0,
+                 end: 7
+             }),
+             repeat: -1,
+             frameRate: 8
+         });
         
         // this.king.anims.play('king_indle');
 
         this.hiero = this.add.sprite(1180, 270, 'hiero', 0).setScale(8);
-        // this.anims.create({
-        //     // Nombre de la animación
-        //     key: 'hiero_idle',
-        //     // Se cargan los frames por números
-        //     // NOTA: generateFrameNames() se
-        //     // usa cuando ya existe un Atlas
-        //     frames: this.anims.generateFrameNumbers('hiero', {
-        //         start: 0,
-        //         end: 15
-        //     }),
-        //     repeat: -1,
-        //     frameRate: 15
-        // });
+         this.anims.create({
+             // Nombre de la animación
+             key: 'hiero_idle',
+             // Se cargan los frames por números
+             // NOTA: generateFrameNames() se
+             // usa cuando ya existe un Atlas
+             frames: this.anims.generateFrameNumbers('hiero', {
+                 start: 0,
+                 end: 15
+             }),
+             repeat: -1,
+             frameRate: 15
+         });
         
         // this.hiero.anims.play('hiero_idle');
 
@@ -177,6 +177,10 @@ class Bootloader extends Phaser.Scene{
                 if(this.condVoltear == false){
                     gameObject.visible = false;
                     this.condVoltear = true;
+                    this.witch.play("witch_idle");
+                    this.hiero.anims.play('hiero_idle');
+                    this.king.anims.play('king_indle');
+                    this.moon.anims.play('moon_indle');
                 }
                 else
                 {
@@ -200,6 +204,8 @@ class Bootloader extends Phaser.Scene{
             // console.log('MOVER personaje izq');
             this.witch.flipX = true;
             this.witch.play('witch_run');
+            this.hiero.flipX = true;
+            //this.hiero.play('');
         });
         this.teclas.der.on('down', ()=>{
             // console.log('MOVER personaje der');
@@ -223,10 +229,6 @@ class Bootloader extends Phaser.Scene{
         this.teclas.powR.on('down', ()=>{
             this.witch.play('witch_charge');
         });
-        this.btn_reset.on('pointer_down', function() {
-           
-        }
-        );
         // .setTint(0x4A148C,0xEA80FC,0x37474F,0x000099)
     }
     
@@ -245,15 +247,27 @@ class Bootloader extends Phaser.Scene{
         // }
         if(Phaser.Input.Keyboard.JustUp(this.teclas.izq)){
             this.witch.play("witch_idle");
+            this.hiero.anims.play('hiero_idle');
+            this.king.anims.play('king_indle');
+            this.moon.anims.play('moon_indle');
         }
         if(Phaser.Input.Keyboard.JustUp(this.teclas.der)){
             this.witch.play("witch_idle");
+            this.hiero.anims.play('hiero_idle');
+            this.king.anims.play('king_indle');
+            this.moon.anims.play('moon_indle');
         }
         if(Phaser.Input.Keyboard.JustUp(this.teclas.powQ)){
             this.witch.play("witch_idle");
+            this.hiero.anims.play('hiero_idle');
+            this.king.anims.play('king_indle');
+            this.moon.anims.play('moon_indle');
         }
         if(Phaser.Input.Keyboard.JustUp(this.teclas.powR)){
             this.witch.play("witch_idle");
+            this.hiero.anims.play('hiero_idle');
+            this.king.anims.play('king_indle');
+            this.moon.anims.play('moon_indle');
         }
        
         
