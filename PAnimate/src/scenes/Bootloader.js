@@ -363,6 +363,7 @@ class Bootloader extends Phaser.Scene{
         });
         
         this.add.image(0, 0, "fondoEMP").setOrigin(-0.01, 0);
+        this.add.image(0, 0, "fondoEMP").setOrigin(0, 0).setDepth(1);
         
         for (let index = 0; index < this.arrayCards.length; index++) {
             this.arrayFront[index] = this.add.image(127 + (index*434), 269, index+4).setOrigin(0,0).setScale(1.05).setInteractive().setTint(0x4A148C,0xEA80FC,0x37474F,0x000099);;
